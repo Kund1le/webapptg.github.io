@@ -1,0 +1,13 @@
+@font-face {
+  font-family: Qanelas;
+  src: url(Qanelas-Regular.ttf) format('ttf'), url(Qanelas-Regular.woff) format('woff'), url(Qanelas-Regular.woff2) format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Qanelas;
+  src: url(Qanelas-Bold.ttf) format('ttf'), url(Qanelas-Bold.woff) format('woff'), url(Qanelas-Bold.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}

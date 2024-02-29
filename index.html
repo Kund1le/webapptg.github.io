@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Goodcom SdalKupil</title>
+	<link rel="stylesheet" href="./fonts/fonts.css"/>
+	<link rel="stylesheet" href="./styles.css"/>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+	<header class="header">
+		<img src="./header.png" alt="Баннер сайта" class="header_logo"/>
+	</header>
+	<main class="content">
+		<section class="title_section">
+			<h1 class="page_title">Калькулятор</h1>
+			<p class="title_description">Рассчитай стоимость своего устройства</p>
+		</section>
+		<section class="calc_section">
+			<h2 class="page_subtitle">Сдаю устройство</h2>
+			<form class="calc_form" name="calc-form">
+				<!--<input 
+				type="text"
+				placeholder="Бренд"
+				id="brandInput"
+				class="page_input"
+				oninput="searchBrands()">
+				<div id="brandSuggestions" ></div>
+				<input
+				type="text"
+				placeholder="Модель"
+				id="modelInput"
+				class="page_input"
+				oninput="searchModels()">
+				<div id="modelSuggestions" hidden></div>
+				<!--<input
+				type="text"
+				placeholder="Память"
+				id="memory-select"
+				class="page_input"
+				/>-->
+				<select id="brandInput" class="page_input" onchange="populateModels()"></select>
+				<select id="modelInput" class="page_input" onchange="populateMemorySizes()"></select>
+				<select id="memoryInput" class="page_input"></select>
+			</form>
+		</section>
+		<section class="quality_section" onchange="selectQuality()">
+			<h3 class="page_subtitle">Состояние</h3>
+			<form class="quality_form">
+				<button type="submit" value="repair" class="page_button">Требуется ремонт</button>
+				<button type="submit" value="satisfactory" class="page_button">Рабочий</button>
+				<button type="submit" value="good" class="page_button">Хорошее</button>
+				<button type="submit" value="excellent" class="page_button">Отличное</button>
+			</form>
+		</section>
+		<section class="result_section">
+			<span id="final-price" class="page_subtitle">Итоговая цена:</span>
+			<button class="result_button">Рассчитать</button>
+			<p class="footnote">*Перед выкупом наши сотрудники</br>
+				протестируют устройство, чтобы</br>
+				определить стоимость точнее.</p>
+		</section>
+	</main>
+	<script src="./scripts.js"></script>
+</body>
+</html>
