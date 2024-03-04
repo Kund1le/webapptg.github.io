@@ -6,7 +6,7 @@ function searchBrands(data) {
 }
 
 function searchModels(brand, data) {
-  let models = data.filter(item => item.brandName === brand).map(item => item.combined_name);
+  let models = [...new Set(data.filter(item => item.brandName === brand).map(item => item.combined_name))];
   return models;
 }
 
@@ -49,8 +49,10 @@ function populateMemorySizes() {
   let modelInput = document.getElementById('modelInput');
   let selectedModel = modelInput.value;
   let memoryInput = document.getElementById('memoryInput');
-  memoryInput.innerHtml = '';
+  memoryInput.innerHTML = '';
   let memorySizes = searchMemory(selectedBrand, selectedModel, data);
+
+  console.log(memorySizes);
 
   memorySizes.forEach(size => {
     let option = document.createElement('option');
