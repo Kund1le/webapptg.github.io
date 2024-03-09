@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="./fonts/fonts.css"/>
 	<link rel="stylesheet" href="./styles.css"/>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script src="./scripts.js"></script>
 </head>
 <body>
 	<header class="header">
@@ -40,12 +41,18 @@
 				id="memory-select"
 				class="page_input"
 				/>-->
-				<select id="brandInput" class="page_input"></select>
-				<select id="modelInput" class="page_input"></select>
-				<select id="memoryInput" class="page_input"></select>
+				<select id="brandInput" class="page_input">
+					<option value="">Бренд</option>
+				</select>
+				<select id="modelInput" class="page_input">
+					<option value="">Модель</option>
+				</select>
+				<select id="storageInput" class="page_input">
+					<option value="">Память</option>
+				</select>
 			</form>
 		</section>
-		<section class="quality_section" onchange="selectQuality()">
+		<section class="quality_section">
 			<h3 class="page_subtitle">Состояние</h3>
 			<form class="quality_form">
 				<button type="submit" value="repair" class="page_button">Требуется ремонт</button>
@@ -62,6 +69,5 @@
 				определить стоимость точнее.</p>
 		</section>
 	</main>
-	<script src="./scripts.js"></script>
 </body>
 </html>
