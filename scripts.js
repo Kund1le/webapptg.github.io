@@ -37,5 +37,14 @@ fetch('data.json')
       storageDropdown.appendChild(storageOption);
     });
   });
+  document.querySelectorAll('.page_button').forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelectorAll('.page_button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    });
+  });
 })
 .catch(error => console.log('Пошла ты', error));

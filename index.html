@@ -20,27 +20,7 @@
 		</section>
 		<section class="calc_section">
 			<h2 class="page_subtitle">Сдаю устройство</h2>
-			<form class="calc_form" name="calc-form">
-				<!--<input 
-				type="text"
-				placeholder="Бренд"
-				id="brandInput"
-				class="page_input"
-				oninput="searchBrands()">
-				<div id="brandSuggestions" ></div>
-				<input
-				type="text"
-				placeholder="Модель"
-				id="modelInput"
-				class="page_input"
-				oninput="searchModels()">
-				<div id="modelSuggestions" hidden></div>
-				<!--<input
-				type="text"
-				placeholder="Память"
-				id="memory-select"
-				class="page_input"
-				/>-->
+			<section class="calc_form" name="calc-form">
 				<select id="brandInput" class="page_input">
 					<option value="">Бренд</option>
 				</select>
@@ -50,20 +30,20 @@
 				<select id="storageInput" class="page_input">
 					<option value="">Память</option>
 				</select>
-			</form>
+			</section>
 		</section>
 		<section class="quality_section">
 			<h3 class="page_subtitle">Состояние</h3>
 			<form class="quality_form">
-				<button type="submit" value="repair" class="page_button">Требуется ремонт</button>
-				<button type="submit" value="satisfactory" class="page_button">Рабочий</button>
-				<button type="submit" value="good" class="page_button">Хорошее</button>
-				<button type="submit" value="excellent" class="page_button">Отличное</button>
+				<button value="repair" class="page_button">Требуется ремонт</button>
+				<button value="satisfactory" class="page_button">Рабочий</button>
+				<button value="good" class="page_button">Хорошее</button>
+				<button value="excellent" class="page_button">Отличное</button>
 			</form>
 		</section>
 		<section class="result_section">
 			<span id="final-price" class="page_subtitle">Итоговая цена:</span>
-			<button class="result_button">Рассчитать</button>
+			<button type="submit" class="result_button">Рассчитать</button>
 			<p class="footnote">*Перед выкупом наши сотрудники</br>
 				протестируют устройство, чтобы</br>
 				определить стоимость точнее.</p>

@@ -22,10 +22,6 @@ body {
   margin: 0;
 }
 
-.header_logo {
-  
-}
-
 .title_section {
   /*display: flex;
   flex-direction: column;*/
@@ -128,6 +124,17 @@ body {
   background-color: #FFF;
 }
 
+.page_button:hover {
+  cursor: pointer;
+}
+
+.page_button.active {
+  border: 2px solid #EB891D;
+  color: #354C5C;
+  font-weight: 600;
+  font-family: 'Qanelas', sans-serif;
+}
+
 .result_button {
   background-color: #EB891D;
   color: #FFF;
@@ -139,4 +146,13 @@ body {
   height: 44px;
   border: none;
   border-radius: 4px;
+}
+
+.result_button:hover {
+  cursor: pointer;
+}
+
+.result_button.active {
+  border: 2px solid #FFF;
+  border-radius: 6px;
 }
