@@ -37,6 +37,7 @@ fetch('data.json')
       storageDropdown.appendChild(storageOption);
     });
   });
+
   document.querySelectorAll('.page_button').forEach(button => {
     button.addEventListener('click', (event) => {
       event.preventDefault();
@@ -46,5 +47,71 @@ fetch('data.json')
       event.target.classList.add('active');
     });
   });
+
+  const brandSelect = document.getElementById('brandInput');
+  const modelSelect = document.getElementById('modelInput');
+  const storageSelect = document.getElementById('storageInput');
+  const excellentBtn = document.getElementById('excellentBtn');
+  const goodBtn = document.getElementById('goodBtn');
+  const workerBtn = document.getElementById('workerBtn');
+  const repairBtn = document.getElementById('repairBtn');
+  const finalPrice = document.getElementById('final-price');
+
+  function calculatePrice() {
+    let price = '';
+    const selectedBrand = brandSelect.value;
+    const selectedModel = modelSelect.value;
+    const selectedStorage = storageSelect.value;
+    const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage);
+
+    if(selectedPhone) {
+      if(excellentBtn.classList.contains('active')) {
+        price = selectedPhone.buyout_price_b;
+      } else if(goodBtn.classList.contains('active')) {
+        price = selectedPhone.buyout_price_c;
+      } else if(workerBtn.classList.contains('active')) {
+        price = selectedPhone.buyout_price_d;
+      } else if(repairBtn.classList.contains('active')) {
+        const repairPriceB = selectedPhone.buyout_price_b;
+        const repairPriceD = selectedPhone.buyout_price_d;
+        const repairPriceRange = {
+          min: (repairPriceD * 80) / 100,
+          max: (repairPriceB * 80) / 100
+        };
+        finalPrice.textContent = 'от ' + repairPriceRange.min + ' до ' + repairPriceRange.max;
+      }
+      finalPrice.textContent = price;
+    } else {
+      finalPrice.textContent = 'Аппарат не найден'
+    }
+  }
+  excellentBtn.addEventListener('click', () => {
+    excellentBtn.classList.add('active');
+    goodBtn.classList.remove('active');
+    workerBtn.classList.remove('active');
+    repairBtn.classList.remove('active');
+    calculatePrice();
+  });
+  goodBtn.addEventListener('click', () => {
+    goodBtn.classList.add('active');
+    excellentBtn.classList.remove('active');
+    workerBtn.classList.remove('active');
+    repairBtn.classList.remove('active');
+    calculatePrice();
+  });
+  workerBtn.addEventListener('click', () => {
+    workerBtn.classList.add('active');
+    excellentBtn.classList.remove('active');
+    goodBtn.classList.remove('active');
+    repairBtn.classList('active');
+    calculatePrice();
+  });
+  repairBtn.addEventListener('click', () => {
+    repairBtn.classList.classList.add('active');
+    excellentBtn.classList.remove('active');
+    goodBtn.classList.remove('active');
+    workerBtn.classList.remove('active');
+  });
+  calculatePrice();
 })
 .catch(error => console.log('Пошла ты', error));
