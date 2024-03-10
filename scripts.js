@@ -31,10 +31,12 @@ fetch('data.json')
     const storageDropdown = document.getElementById('storageInput');
     storageDropdown.innerHTML = `<option value="">Память</option>`;
     data.filter(phone => phone.combined_name === selectedModel).forEach(phone => {
+      if(phone.memory_size !== null) {
       const storageOption = document.createElement('option');
       storageOption.text = phone.memory_size;
       storageOption.value = phone.memory_size;
       storageDropdown.appendChild(storageOption);
+      }
     });
   });
 
@@ -62,7 +64,7 @@ fetch('data.json')
     const selectedBrand = brandSelect.value;
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
-    const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage);
+    const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
 
     if(selectedPhone) {
       if(excellentBtn.classList.contains('active')) {
