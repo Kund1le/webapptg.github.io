@@ -2,15 +2,22 @@ fetch('data.json')
 .then(response => response.json())
 .then(data => {
   const brands = [];
-  data.forEach(phone => {
-    if(!brands.includes(phone.brandName)) {
-      brands.push(phone.brandName);
-      const brandOption = document.createElement('option');
-      brandOption.text = phone.brandName;
-      brandOption.value = phone.brandName;
-      document.getElementById('brandInput').appendChild(brandOption);
-    }
-  });
+data.forEach(phone => {
+  if (!brands.includes(phone.brandName)) {
+    brands.push(phone.brandName);
+  }
+});
+
+brands.sort();
+
+const brandInput = document.getElementById('brandInput');
+brands.forEach(brand => {
+  const brandOption = document.createElement('option');
+  brandOption.text = brand;
+  brandOption.value = brand;
+  brandInput.appendChild(brandOption);
+});
+
   document.getElementById('brandInput').addEventListener('change', () => {
     const selectedBrand = document.getElementById('brandInput').value;
     const modelsDropdown = document.getElementById('modelInput');
@@ -77,8 +84,8 @@ fetch('data.json')
         const priceB = selectedPhone.buyout_price_b;
         const priceD = selectedPhone.buyout_price_d;
         const repairPriceRange = {
-          min: (priceB * 80) / 100,
-          max: (priceD * 80) / 100
+          min: (priceD * 80) / 100,
+          max: (priceB * 80) / 100
         };
         price = `от ${repairPriceRange.min} до ${repairPriceRange.max}`;
       }
