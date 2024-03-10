@@ -58,7 +58,7 @@ fetch('data.json')
   const finalPrice = document.getElementById('final-price');
 
   function calculatePrice() {
-    let price = '';
+    let price = 'Итоговая цена';
     const selectedBrand = brandSelect.value;
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
@@ -72,15 +72,12 @@ fetch('data.json')
       } else if(workerBtn.classList.contains('active')) {
         price = selectedPhone.buyout_price_d;
       } else if(repairBtn.classList.contains('active')) {
-        const repairPriceB = selectedPhone.buyout_price_b;
-        const repairPriceD = selectedPhone.buyout_price_d;
-        const repairPriceRange = {
-          min: (repairPriceD * 80) / 100,
-          max: (repairPriceB * 80) / 100
-        };
-        finalPrice.textContent = 'от ' + repairPriceRange.min + ' до ' + repairPriceRange.max;
+        const repairPriceD = selectedPhone.buyouy_price_d - (selectedPhone.buyout_price_d * 80 / 100);
+        const repairPriceB = selectedPhone.buyout_price_b - (selectedPhone.butout_price_b * 80 / 100);
+
+        price.textContent = 'от ' + repairPriceD + ' до ' + repairPriceB;
       }
-      finalPrice.textContent = price;
+      finalPrice.textContent = 'Итоговая цена: ' + price;
     } else {
       finalPrice.textContent = 'Аппарат не найден'
     }
@@ -103,11 +100,11 @@ fetch('data.json')
     workerBtn.classList.add('active');
     excellentBtn.classList.remove('active');
     goodBtn.classList.remove('active');
-    repairBtn.classList('active');
+    repairBtn.classList.remove('active');
     calculatePrice();
   });
   repairBtn.addEventListener('click', () => {
-    repairBtn.classList.classList.add('active');
+    repairBtn.classList.add('active');
     excellentBtn.classList.remove('active');
     goodBtn.classList.remove('active');
     workerBtn.classList.remove('active');
