@@ -114,5 +114,9 @@ fetch('data.json')
     calculatePrice();
   });
   calculatePrice();
+
+  document.getElementById('resultButton').addEventListener('click', () => {
+    document.getElementById('final-price').style.display = 'block';
+  })
 })
 .catch(error => console.log('Пошла ты', error));
