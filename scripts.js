@@ -58,7 +58,7 @@ fetch('data.json')
   const finalPrice = document.getElementById('final-price');
 
   function calculatePrice() {
-    let price = 'Итоговая цена';
+    let price = '';
     const selectedBrand = brandSelect.value;
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
@@ -72,10 +72,13 @@ fetch('data.json')
       } else if(workerBtn.classList.contains('active')) {
         price = selectedPhone.buyout_price_d;
       } else if(repairBtn.classList.contains('active')) {
-        const repairPriceD = selectedPhone.buyouy_price_d - (selectedPhone.buyout_price_d * 80 / 100);
-        const repairPriceB = selectedPhone.buyout_price_b - (selectedPhone.butout_price_b * 80 / 100);
-
-        price.textContent = 'от ' + repairPriceD + ' до ' + repairPriceB;
+        const priceB = selectedPhone.buyout_price_b;
+        const priceD = selectedPhone.buyout_price_d;
+        const repairPriceRange = {
+          min: (priceB * 80) / 100,
+          max: (priceD * 80) / 100
+        };
+        price = `от ${repairPriceRange.min} до ${repairPriceRange.max}`;
       }
       finalPrice.textContent = 'Итоговая цена: ' + price;
     } else {
@@ -108,6 +111,7 @@ fetch('data.json')
     excellentBtn.classList.remove('active');
     goodBtn.classList.remove('active');
     workerBtn.classList.remove('active');
+    calculatePrice();
   });
   calculatePrice();
 })
