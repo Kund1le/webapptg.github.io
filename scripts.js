@@ -26,7 +26,8 @@ brands.forEach(brand => {
     data.filter(phone => phone.brandName === selectedBrand).forEach(phone => {
       uniqueModels.add(phone.combined_name);
     });
-    uniqueModels.forEach(model => {
+    const sortedModels = Array.from(uniqueModels).sort();
+    sortedModels.forEach(model => {
       const modelOption = document.createElement('option');
       modelOption.text = model;
       modelOption.value = model;
@@ -36,16 +37,20 @@ brands.forEach(brand => {
   document.getElementById('modelInput').addEventListener('change', () => {
     const selectedModel = document.getElementById('modelInput').value;
     const storageDropdown = document.getElementById('storageInput');
-    storageDropdown.innerHTML = `<option value="">Память</option>`;
-    data.filter(phone => phone.combined_name === selectedModel).forEach(phone => {
-      if(phone.memory_size !== null) {
-      const storageOption = document.createElement('option');
-      storageOption.text = phone.memory_size;
-      storageOption.value = phone.memory_size;
-      storageDropdown.appendChild(storageOption);
-      }
+    storageDropdown.innerHTML = '<option value="">Память</option>';
+    
+    const memorySizes = data.filter(phone => phone.combined_name === selectedModel)
+                            .map(phone => phone.memory_size)
+                            .filter(memory => memory !== null)
+                            .sort((a, b) => a - b);
+
+    memorySizes.forEach(memorySize => {
+        const storageOption = document.createElement('option');
+        storageOption.text = memorySize;
+        storageOption.value = memorySize;
+        storageDropdown.appendChild(storageOption);
     });
-  });
+});
 
   document.querySelectorAll('.page_button').forEach(button => {
     button.addEventListener('click', (event) => {
@@ -91,7 +96,7 @@ brands.forEach(brand => {
       }
       finalPrice.textContent = 'Итоговая цена: ' + price;
     } else {
-      finalPrice.textContent = 'Аппарат не найден'
+      finalPrice.textContent = 'Устройство не найдено'
     }
   }
   excellentBtn.addEventListener('click', () => {
