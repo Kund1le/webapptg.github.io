@@ -131,6 +131,25 @@ brands.forEach(brand => {
 
   document.getElementById('resultButton').addEventListener('click', () => {
     document.getElementById('final-price').style.display = 'block';
+  });
+
+  function resetActiveButton() {
+    document.querySelectorAll('.page_button').forEach(button => {
+      button.classList.remove('active');
+    });
+    document.getElementById('final-price').style.display = 'none';
+  }
+
+  document.getElementById('brandInput').addEventListener('change', () => {
+    resetActiveButton();
+  });
+
+  document.getElementById('modelInput').addEventListener('change', () => {
+    resetActiveButton();
+  });
+
+  document.getElementById('storageInput').addEventListener('change', () => {
+    resetActiveButton();
   })
 })
 .catch(error => console.log('Пошла ты', error));
