@@ -131,6 +131,8 @@ brands.forEach(brand => {
 
   document.getElementById('resultButton').addEventListener('click', () => {
     document.getElementById('final-price').style.display = 'block';
+    document.getElementById('resultButton').style.display = 'none';
+    document.getElementById('requestButton').style.display = 'block';
   });
 
   function resetActiveButton() {
