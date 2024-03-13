@@ -140,6 +140,8 @@ brands.forEach(brand => {
       button.classList.remove('active');
     });
     document.getElementById('final-price').style.display = 'none';
+    document.getElementById('requestButton').style.display = 'none';
+    document.getElementById('resultButton').style.display = 'block';
   }
 
   document.getElementById('brandInput').addEventListener('change', () => {
