@@ -45,11 +45,20 @@
 			<span id="deviceId"></span>
 			<span id="final-price" class="page_subtitle" style="display: none">Итоговая цена:</span>
 			<button type="submit" id="resultButton" class="result_button">Рассчитать</button>
-			<button id="requestButton" class="result_button" style="display: none">Оставить заявку</button>
+			<button id="requestButton" class="result_button" style="display: none" type="button" onclick="window['popup'].showModal()" >Оставить заявку</button>
 			<p class="footnote">*Перед выкупом наши сотрудники</br>
 				протестируют устройство, чтобы</br>
 				определить стоимость точнее.</p>
 		</section>
 	</main>
+	<dialog class="popup" id="popup">
+		<form method="dialog">
+			<div class="popup-block">
+			<span class="popup-header">Ваша заявка принята</span>
+			<p class="popup-text">Ожидайте сообщение </br> с номером заявки</p>
+			</div>
+			<button class="result_button" id="popup-button" type="button" onclick="window['popup'].close()">Закрыть</button>
+		</form>
+	</dialog>
 </body>
 </html>
