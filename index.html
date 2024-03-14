@@ -57,7 +57,7 @@
 			<span class="popup-header">Ваша заявка принята</span>
 			<p class="popup-text">Ожидайте сообщение </br> с номером заявки</p>
 			</div>
-			<button class="result_button" id="popup-button" type="button" onclick="window['popup'].close()">Закрыть</button>
+			<button class="result_button" id="popup-button" type="button" onclick="telegram.WebApp.onEvent('backButtonClicked', callback)">Закрыть</button>
 		</form>
 	</dialog>
 </body>
