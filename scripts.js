@@ -1,3 +1,7 @@
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
 fetch('data.json')
 .then(response => response.json())
 .then(data => {
