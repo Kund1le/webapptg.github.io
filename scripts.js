@@ -163,6 +163,9 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-Telegram.WebApp.onEvent('mainButtonClicked', () => {
-tg.sendData(priceResult)
-})
+document.getElementById('popup-button').addEventListener('click', () => {
+  let dialog = document.getElementById('popup');
+  dialog.close();
+  window.open('tg://msg?text=Сообщение после нажатия на кнопку "Закрыть"');
+});
+console.log(window.open)

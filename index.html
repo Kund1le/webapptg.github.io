@@ -41,9 +41,7 @@
 		</section>
 		<section class="result_section">
 			<span id="deviceId"></span>
-			<div class="priceResult">
 			<span id="final-price" class="page_subtitle" style="display: none">Итоговая цена:</span>
-			</div>
 			<button type="submit" id="resultButton" class="result_button">Рассчитать</button>
 			<button id="requestButton" class="result_button" style="display: none" type="button" onclick="window['popup'].showModal()" >Оставить заявку</button>
 			<p class="footnote">*Перед выкупом наши сотрудники</br>
@@ -57,7 +55,7 @@
 			<span class="popup-header">Ваша заявка принята</span>
 			<p class="popup-text">Ожидайте сообщение </br> с номером заявки</p>
 			</div>
-			<button class="result_button" id="popup-button" type="button" href="tg://resolve">Закрыть</button>
+			<button id="popup-button" class="result_button" type="button">Закрыть</button>
 		</form>
 	</dialog>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
