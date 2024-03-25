@@ -177,6 +177,5 @@ popupButton.addEventListener('click', () => {
     console.log('Сообщение отправлено', data);
   })
   .catch(error => console.error('Ошибка', error));
-
   window.close();
 });
