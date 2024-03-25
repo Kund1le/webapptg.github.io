@@ -172,7 +172,10 @@ popupButton.addEventListener('click', () => {
   const userChatId = chatId
   const message = 'Какой-то сообщение';
 
-  fetch(`'https://api.telegram.org/bot5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM/sendMessage?chat_id=' + ${userChatId} + '&text=' + ${message}`)
-  .then(response => console.log('Сообщение отправлено успешно'))
+  fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${userChatId}&text=${message}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log('Сообщение отправлено', data);
+  })
   .catch(error => console.error('Ошибка', error));
 });
