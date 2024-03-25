@@ -163,9 +163,32 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-document.getElementById('popup-button').addEventListener('click', () => {
-  let dialog = document.getElementById('popup');
-  dialog.close();
-  window.open('tg://msg?text=Сообщение после нажатия на кнопку "Закрыть"');
-});
-console.log(window.open)
+const botToken = '5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM';
+let chatId;
+
+function getUpdates() {
+  fetch(`https://api.telegram.org/bot${botToken}/getUpdates`)
+  .then(response => response.json)
+  .then(data => {
+    chatId = data.result[0].message.chat.id;
+    console.log('Chat Id:', chatId);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+getUpdates();
+
+function sendMessage(text) {
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${text}`)
+  .then(response => response.json)
+  .then(data => {
+    console.log('Message sent:', text);
+  })
+  .catch(error => {
+    console.error('Error sending message:', error);
+  });
+}
+
+sendMessage('Какое-то сообщение');
