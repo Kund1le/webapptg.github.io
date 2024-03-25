@@ -166,8 +166,7 @@ tg.expand();
 const popupButton = document.getElementById('popup-button');
 
 popupButton.addEventListener('click', () => {
-  window.close();
-
+  const token = '5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM';
   const chatId = window.Telegram.WebApp.openChatId;
   const userChatId = chatId
   const message = 'Какой-то сообщение';
@@ -178,4 +177,6 @@ popupButton.addEventListener('click', () => {
     console.log('Сообщение отправлено', data);
   })
   .catch(error => console.error('Ошибка', error));
+
+  window.close();
 });
