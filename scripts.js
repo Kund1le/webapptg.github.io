@@ -178,12 +178,11 @@ popupButton.addEventListener('click', () => {
 
   const message = 'Какой-то сообщение';
 
-  fetch(`https://api.telegram.org/bot/${token}/sendMessage?chat_id=${userChatId}&text=${message}`)
+  fetch('https://api.telegram.org/bot<5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM>/sendMessage?chat_id=${userChatId}&text=Возвращаю в чат-бота')
   .then(response => response.json())
   .then(data => {
     console.log('Сообщение отправлено', data);
   })
   .catch(error => console.error('Ошибка', error));
 
-  window.close();
 });
