@@ -163,15 +163,6 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-let userChatId;
-const token = '5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM';
-
-document.addEventListener('DOMContentLoaded', () => {
-  const chatId = window.Telegram.WebApp.openChatId;
-  userChatId = chatId;
-  console.log('Chat ID', userChatId);
+document.getElementById('popup-button').addEventListener('click', () => {
+  tg.sendData('Good news');
 })
-
-const popupButton = document.getElementById('popup-button');
-
-popupButton.addEventListener('click', sendData(data));
