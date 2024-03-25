@@ -163,19 +163,27 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
+let userChatId;
+const token = '5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const chatId = window.Telegram.WebApp.openChatId;
+  userChatId = chatId;
+  console.log('Chat ID', userChatId);
+})
+
 const popupButton = document.getElementById('popup-button');
 
 popupButton.addEventListener('click', () => {
-  const token = '5078318939:AAG5ilp8YDGHzirehcm_2L1GqStKA5N1UzM';
-  const chatId = window.Telegram.WebApp.openChatId;
-  const userChatId = chatId
+
   const message = 'Какой-то сообщение';
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${userChatId}&text=${message}`)
+  fetch(`https://api.telegram.org/bot/${token}/sendMessage?chat_id=${userChatId}&text=${message}`)
   .then(response => response.json())
   .then(data => {
     console.log('Сообщение отправлено', data);
   })
   .catch(error => console.error('Ошибка', error));
+
   window.close();
 });
