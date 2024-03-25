@@ -1,7 +1,3 @@
-let tg = window.Telegram.WebApp;
-
-tg.expand();
-
 fetch('data.json')
 .then(response => response.json())
 .then(data => {
@@ -161,3 +157,12 @@ brands.forEach(brand => {
   })
 })
 .catch(error => console.log('Пошла ты', error));
+
+
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
+Telegram.WebApp.onEvent('mainButtonClicked', () => {
+tg.sendData(priceResult)
+})
