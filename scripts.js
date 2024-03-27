@@ -70,13 +70,14 @@ brands.forEach(brand => {
   const workerBtn = document.getElementById('workerBtn');
   const repairBtn = document.getElementById('repairBtn');
   const finalPrice = document.getElementById('final-price');
-
+  
   function calculatePrice() {
     let price = '';
     const selectedBrand = brandSelect.value;
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
     const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
+    telegramPhoneData = selectedPhone
 
     if(selectedPhone) {
       if(excellentBtn.classList.contains('active')) {
@@ -158,11 +159,15 @@ brands.forEach(brand => {
 })
 .catch(error => console.log('Пошла ты', error));
 
-
+let telegramPhoneData;
 let tg = window.Telegram.WebApp;
 
 tg.expand();
 
 document.getElementById('popup-button').addEventListener('click', () => {
-  tg.sendData(selectedPhone);
+  if (telegramPhoneData) {
+    tg.sendData(telegramPhoneData);
+  } else {
+    console.log('Выбранный телефон не найден');
+  }
 })
