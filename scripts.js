@@ -77,8 +77,10 @@ brands.forEach(brand => {
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
     const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
-    const { id, guid } = selectedPhone;
-    PhoneDataForBot = { id, guid };
+    console.log(selectedPhone.id);
+    console.log(selectedPhone.guid);
+    console.log(selectedPhone);
+   
 
     if(selectedPhone) {
       if(excellentBtn.classList.contains('active')) {
