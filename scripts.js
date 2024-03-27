@@ -164,6 +164,5 @@ let tg = window.Telegram.WebApp;
 tg.expand();
 
 document.getElementById('popup-button').addEventListener('click', () => {
-  console.log('selectedPhone', error)
   tg.sendData(selectedPhone);
 })
