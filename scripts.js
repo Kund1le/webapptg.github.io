@@ -77,7 +77,8 @@ brands.forEach(brand => {
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
     const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
-    telegramPhoneData = selectedPhone
+    const { id, guid } = selectedPhone;
+    PhoneDataForBot = { id, guid };
 
     if(selectedPhone) {
       if(excellentBtn.classList.contains('active')) {
@@ -159,14 +160,14 @@ brands.forEach(brand => {
 })
 .catch(error => console.log('Пошла ты', error));
 
-let telegramPhoneData;
+let PhoneDataForBot;
 let tg = window.Telegram.WebApp;
 
 tg.expand();
 
 document.getElementById('popup-button').addEventListener('click', () => {
-  if (telegramPhoneData) {
-    tg.sendData(telegramPhoneData);
+  if (PhoneDataForBot) {
+    tg.sendData(PhoneDataForBot);
   } else {
     console.log('Выбранный телефон не найден');
   }
