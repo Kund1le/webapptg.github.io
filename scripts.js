@@ -77,9 +77,9 @@ brands.forEach(brand => {
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
     const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
-    console.log(selectedPhone.id);
-    console.log(selectedPhone.guid);
-    console.log(selectedPhone);
+    const id = selectedPhone.id
+    const guid = selectedPhone.guid
+    PhoneDataForBot = {id, guid}
    
 
     if(selectedPhone) {
