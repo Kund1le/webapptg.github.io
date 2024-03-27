@@ -77,11 +77,10 @@ brands.forEach(brand => {
     const selectedModel = modelSelect.value;
     const selectedStorage = storageSelect.value;
     const selectedPhone = data.find(phone => phone.brandName === selectedBrand && phone.combined_name === selectedModel && phone.memory_size === selectedStorage !== null);
-    if (selectedPhone) {
-      const id = selectedPhone.id;
-      const guid = selectedPhone.guid;
-      PhoneDataForBot = {id, guid}
-    }
+    const id = selectedPhone.id;
+    const guid = selectedPhone.guid;
+    PhoneDataForBot = JSON.stringify({'id':id, 'guid':guid})
+    
     
    
 
